@@ -1,0 +1,13 @@
+[package]
+name = "dusk_engine"
+version = "0.1.0"
+authors = ["YHY"]
+edition = "2018"
+license = "MIT OR Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+conrod = { version = "0.55.0", features = ["glium", "winit"] }
+find_folder = "0.3.0"
+image = "0.22"
