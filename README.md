@@ -1,2 +1,2 @@
-# dusk_engine
-A rust game engine.
+# dusk engine
+dusk engine is a rust game engine.
