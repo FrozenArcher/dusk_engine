@@ -4,9 +4,9 @@ extern crate image;
 
 mod event_loop;
 mod game_window;
-mod sources;
 mod sprite;
 pub mod game;
+pub mod dusk_path;
 
 #[cfg(test)]
 mod tests {
