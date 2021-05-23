@@ -1,8 +1,8 @@
-use crate::event_loop::EventLoop;
+use crate::{event_loop::EventLoop};
 use crate::game::GameWindowBuilder;
+use crate::dusk_path::GamePath;
 use conrod::backend::glium::glium::{self, Surface};
 use conrod::{widget, Colorable, Positionable, Sizeable, Widget};
-use std::path::PathBuf;
 
 widget_ids!(struct Ids{
     text,
@@ -13,7 +13,7 @@ pub struct GameWindow {
     events_loop: glium::glutin::EventsLoop,
     display: glium::Display,
     ui: conrod::Ui,
-    assets: PathBuf,
+    assets: GamePath,
     ids: Ids,
     imagine_map: conrod::image::Map<glium::texture::Texture2d>,
     renderer: conrod::backend::glium::Renderer,
@@ -40,11 +40,13 @@ impl GameWindow {
         // stored
         let mut ui = conrod::UiBuilder::new([width as f64, height as f64]).build();
         // stored
-        let assets = find_folder::Search::KidsThenParents(3, 5)
-            .for_folder("assets")
-            .unwrap();
-        // temp
-        let font_path = assets.join("fonts\\segoepr.ttf");
+        // let assets = find_folder::Search::KidsThenParents(3, 5)
+        //      .for_folder("assets")
+        //      .unwrap();
+        let assets = GamePath::folder("assets");
+        // let font_path = assets.join("fonts/segoepr.ttf");
+        let font_path = assets.clone()
+            .sub("fonts").source("segoepr.ttf");
         ui.fonts.insert_from_file(font_path).unwrap();
 
         // stored
@@ -132,7 +134,8 @@ impl GameWindow {
         (w, h, test_image)
     }
     fn load_image(&self) -> glium::texture::Texture2d {
-        let img_path = self.assets.join("images\\image.jpg");
+        let img_path = self.assets.clone()
+            .sub("images").source("image.jpg");
         let rgba_image = image::open(&std::path::Path::new(&img_path))
             .unwrap()
             .to_rgba();
