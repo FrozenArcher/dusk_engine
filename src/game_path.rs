@@ -11,11 +11,12 @@ use std::path::PathBuf;
 ///
 /// usages:
 /// ```
-/// let some_path = GamePath::folder("a_folder")
-///     .sub("a_sub_dir")
-///     .sub("another_sub_dir")
+/// use dusk_engine::game_path::GamePath;
+/// let some_path = GamePath::folder("test")
+///     .sub("test_assets")
+///     .sub("sub_dir")
 ///     .file("sample.txt");
-/// sth.open(some_path);
+/// // you may use this by: sth.open(some_path);
 /// ```
 pub struct GamePath {
     path: PathBuf,
