@@ -9,3 +9,4 @@ the engine is aimed at providing a game developing experience like Unity Engine:
 * **Sprite**, like *GameObject* s in Unity.
 * etc.
 
+the crate is at its initial building process now, and not available and usable.
