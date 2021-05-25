@@ -1,10 +1,26 @@
 use std::path::PathBuf;
 
+/// GamePath is a convenient path operation in dusk engine.
+/// use this so that you don't need to use the crate fins_folder.
+///
+/// resolved problems caused by different path formats in different OSs.
+///
+/// # Panics 
+/// if the argument of the "folder" method refers to a missing directory,
+/// the program will panic.
+///
+/// usages:
+/// ```
+/// let some_path = GamePath::folder("a_folder")
+///     .sub("a_sub_dir")
+///     .sub("another_sub_dir")
+///     .file("sample.txt");
+/// sth.open(some_path);
+/// ```
 pub struct GamePath {
     path: PathBuf,
 }
 
-/// GamePath is a convenient path operation in dusk engine.
 impl GamePath {
     /// refers to a directory.
     /// 
@@ -23,8 +39,8 @@ impl GamePath {
         self.path = self.path.join(name);
         self
     }
-    /// returns a source's directory in the path.
-    pub fn source(self, name: &str) -> PathBuf {
+    /// returns a file's directory in the path.
+    pub fn file(self, name: &str) -> PathBuf {
         self.path.join(name)
     }
 }

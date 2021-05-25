@@ -6,7 +6,7 @@ mod event_loop;
 mod game_window;
 mod sprite;
 pub mod game;
-pub mod dusk_path;
+pub mod game_path;
 
 #[cfg(test)]
 mod tests {

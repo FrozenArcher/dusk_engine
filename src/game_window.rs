@@ -1,6 +1,6 @@
 use crate::{event_loop::EventLoop};
 use crate::game::GameWindowBuilder;
-use crate::dusk_path::GamePath;
+use crate::game_path::GamePath;
 use conrod::backend::glium::glium::{self, Surface};
 use conrod::{widget, Colorable, Positionable, Sizeable, Widget};
 
@@ -46,7 +46,7 @@ impl GameWindow {
         let assets = GamePath::folder("assets");
         // let font_path = assets.join("fonts/segoepr.ttf");
         let font_path = assets.clone()
-            .sub("fonts").source("segoepr.ttf");
+            .sub("fonts").file("segoepr.ttf");
         ui.fonts.insert_from_file(font_path).unwrap();
 
         // stored
@@ -135,7 +135,7 @@ impl GameWindow {
     }
     fn load_image(&self) -> glium::texture::Texture2d {
         let img_path = self.assets.clone()
-            .sub("images").source("image.jpg");
+            .sub("images").file("image.jpg");
         let rgba_image = image::open(&std::path::Path::new(&img_path))
             .unwrap()
             .to_rgba();
