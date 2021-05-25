@@ -8,15 +8,21 @@ use std::path::PathBuf;
 /// # Panics 
 /// if the argument of the "folder" method refers to a missing directory,
 /// the program will panic.
-///
-/// usages:
+/// ***
+/// **usages**:
 /// ```
 /// use dusk_engine::game_path::GamePath;
+/// // for the fn open, you don't need to use PathBuf yourself.
+/// use std::path::PathBuf;  
+/// // a sample function,you don't need to write this yourself.
+/// fn open(path: PathBuf) {}
+///
 /// let some_path = GamePath::folder("test")
 ///     .sub("test_assets")
 ///     .sub("sub_dir")
 ///     .file("sample.txt");
-/// // you may use this by: sth.open(some_path);
+///
+/// open(some_path);
 /// ```
 pub struct GamePath {
     path: PathBuf,
